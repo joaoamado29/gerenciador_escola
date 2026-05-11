@@ -1,0 +1,15 @@
+/* streamlit 1.39 — revisar se header testid mudar */
+:root {
+    --nav-font: 1.35rem;
+    --nav-height: 5rem;
+}
+
+/* Header */
+header[data-testid="stHeader"] { height: var(--nav-height); background-color: #009b1a; }
+
+header[data-testid="stHeader"] a,
+header[data-testid="stHeader"] span { font-size: var(--nav-font);}
+
+
+/* Dropdown */
+[data-testid="stTopNavDropdownLink"] { font-size: 1rem; padding: 0.3rem 2rem; }
