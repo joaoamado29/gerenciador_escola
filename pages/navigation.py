@@ -1,7 +1,10 @@
+# Define as barras de navegação superiores para cada tipo de usuário
 import streamlit as st
+
 
 # Navegação para o aluno
 def nav_aluno():
+    # Agrupa as páginas em seções exibidas no menu superior
     pages = {
         "Aluno": [
             st.Page("pages/shared/inicio.py", title="Início", default=True),
@@ -18,6 +21,7 @@ def nav_aluno():
         ],
     }
 
+    # Renderiza o menu no topo e executa a página escolhida
     pg = st.navigation(pages, position="top")
     pg.run()
 

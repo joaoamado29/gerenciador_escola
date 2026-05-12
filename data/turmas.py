@@ -1,9 +1,12 @@
+# Dados e helpers de turmas (compartilhado entre as páginas do professor)
 import streamlit as st
 
+# Opções disponíveis para compor uma turma
 ANOS = ['1º ano', '2º ano', '3º ano']
 CLASSES = ['Classe A', 'Classe B', 'Classe C']
 TURNOS = ['Manhã', 'Tarde', 'Noite']
 
+# Lista fixa de alunos por turma (ano, classe, turno) -- placeholder até ter BD
 ALUNOS_POR_TURMA = {
     ('1º ano', 'Classe A', 'Manhã'): ['Ana Silva', 'Bruno Souza'],
     ('1º ano', 'Classe A', 'Tarde'): ['Carla Lima', 'Diego Rocha'],
@@ -37,6 +40,7 @@ ALUNOS_POR_TURMA = {
 }
 
 
+# Exibe três selectboxes (ano / classe / turno) e devolve a turma escolhida
 def selecionar_turma():
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -48,5 +52,6 @@ def selecionar_turma():
     return ano, classe, turno
 
 
+# Busca os alunos de uma turma; retorna lista vazia se a turma não existir
 def alunos_da_turma(turma):
     return ALUNOS_POR_TURMA.get(turma, [])

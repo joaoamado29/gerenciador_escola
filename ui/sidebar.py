@@ -1,5 +1,8 @@
+# Botões da barra lateral usados como atalho de navegação
 import streamlit as st
 
+
+# Adiciona os botões na sidebar e troca de página quando clicados
 def btn_sidebar():
     if st.sidebar.button('Início', width="stretch", type="tertiary"):
         st.switch_page("app.py")
