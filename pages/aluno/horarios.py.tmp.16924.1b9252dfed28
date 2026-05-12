@@ -1,4 +1,0 @@
-# Página do aluno para consultar o horário de aula (em construção)
-import streamlit as st
-
-st.write('Horário de Aula')
