@@ -32,12 +32,27 @@ header[data-testid="stHeader"] span {
         gap: 0.5rem;
         flex-wrap: wrap;
     }
+    /* Reduz st.title em tablet */
+    [data-testid="stMarkdownContainer"] h1 {
+        font-size: 1.75rem !important;
+    }
 }
 
 /* Mobile: esconde top nav abaixo de 425px */
 @media (max-width: 425px) {
     header[data-testid="stHeader"] [data-testid="stTopNav"] {
         display: none !important;
+    }
+    /* Reduz títulos em mobile */
+    [data-testid="stMarkdownContainer"] h1 {
+        font-size: 1.4rem !important;
+        line-height: 1.2;
+    }
+    [data-testid="stMarkdownContainer"] h2 {
+        font-size: 1.15rem !important;
+    }
+    [data-testid="stMarkdownContainer"] h3 {
+        font-size: 1rem !important;
     }
 }
 
