@@ -4,6 +4,8 @@ import streamlit as st
 
 # Navegação para o aluno
 def nav_aluno():
+    # Identifica o tipo de usuário para as páginas compartilhadas (ex.: Avisos)
+    st.session_state['papel'] = 'aluno'
     # Agrupa as páginas em seções exibidas no menu superior
     pages = {
         "Aluno": [
@@ -28,6 +30,7 @@ def nav_aluno():
 
 # Navegação para o professor
 def nav_professor():
+    st.session_state['papel'] = 'professor'
     pages = {
         "Professor": [
             st.Page("pages/shared/inicio.py", title="Início", default=True),
@@ -49,12 +52,14 @@ def nav_professor():
 
 # Navegação para o administrador
 def nav_admin():
+    st.session_state['papel'] = 'admin'
     pages = {
         "Admin": [
             st.Page("pages/shared/inicio.py", title="Início", default=True),
             st.Page("pages/admin/gerenciar_usuarios.py", title="Gerenciar Usuários"),
             st.Page("pages/admin/dashboards.py", title="Dashboards"),
             st.Page("pages/admin/relatorios.py", title="Relatórios"),
+            st.Page("pages/admin/enviar_mensagem.py", title="Enviar Aviso"),
         ],
         "Importante": [
             st.Page("pages/shared/avisos.py", title="Avisos"),
