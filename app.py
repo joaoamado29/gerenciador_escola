@@ -9,7 +9,7 @@ load_css()
 
 def main() -> None:
     # Define qual navegação exibir (aluno / professor / admin)
-    nav_professor()
+    nav_admin()
 
 if __name__ == "__main__":
     main()
