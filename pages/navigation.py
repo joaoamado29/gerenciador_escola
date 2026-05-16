@@ -50,6 +50,7 @@ def nav_professor():
     pg = st.navigation(pages, position="top")
     pg.run()
 
+
 # Navegação para o administrador
 def nav_admin():
     st.session_state['papel'] = 'admin'
@@ -67,7 +68,7 @@ def nav_admin():
         ],
         "Horários": [
             st.Page("pages/shared/calendario.py", title="Calendário"),
-            st.Page("pages/professor/grade_horaria.py", title="Grade Horária"),
+            st.Page("pages/admin/grade_horaria.py", title="Grade Horária"),
         ],
     }
 
