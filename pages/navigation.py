@@ -59,11 +59,11 @@ def nav_admin():
             st.Page("pages/admin/gerenciar_usuarios.py", title="Gerenciar Usuários"),
             st.Page("pages/admin/dashboards.py", title="Dashboards"),
             st.Page("pages/admin/relatorios.py", title="Relatórios"),
-            st.Page("pages/admin/enviar_mensagem.py", title="Enviar Aviso"),
         ],
         "Importante": [
             st.Page("pages/shared/avisos.py", title="Avisos"),
-            st.Page("pages/shared/contato.py", title="Contato")
+            st.Page("pages/shared/contato.py", title="Contato"),
+            st.Page("pages/admin/enviar_mensagem.py", title="Enviar Aviso"),
         ],
         "Horários": [
             st.Page("pages/shared/calendario.py", title="Calendário"),

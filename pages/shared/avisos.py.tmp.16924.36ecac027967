@@ -1,4 +1,0 @@
-# Página de avisos compartilhada entre todos os usuários (em construção)
-import streamlit as st
-
-st.write('Avisos')

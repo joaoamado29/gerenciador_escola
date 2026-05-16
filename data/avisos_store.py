@@ -44,7 +44,11 @@ def remover_aviso(aviso_id):
     _salvar(avisos)
 
 
-# Devolve só os avisos visíveis para um tipo de usuário ('professor' / 'aluno')
+# Devolve os avisos visíveis para um tipo de usuário.
+# O admin (coordenação) vê todos; professor e aluno veem só os do seu público.
 def avisos_para(papel):
+    avisos = listar_avisos()
+    if papel == 'admin':
+        return avisos
     alvo = 'Professores' if papel == 'professor' else 'Alunos'
-    return [a for a in listar_avisos() if a['publico'] in ('Todos', alvo)]
+    return [a for a in avisos if a['publico'] in ('Todos', alvo)]

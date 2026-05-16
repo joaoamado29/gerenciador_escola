@@ -66,3 +66,11 @@ def test_avisos_para_aluno_inclui_todos_e_alunos():
     avisos_store.adicionar_aviso('Só alunos', 'msg', 'Alunos')
     titulos = [a['titulo'] for a in avisos_store.avisos_para('aluno')]
     assert titulos == ['Só alunos', 'Geral']
+
+
+def test_avisos_para_admin_ve_todos():
+    avisos_store.adicionar_aviso('Geral', 'msg', 'Todos')
+    avisos_store.adicionar_aviso('Só professores', 'msg', 'Professores')
+    avisos_store.adicionar_aviso('Só alunos', 'msg', 'Alunos')
+    titulos = [a['titulo'] for a in avisos_store.avisos_para('admin')]
+    assert titulos == ['Só alunos', 'Só professores', 'Geral']
