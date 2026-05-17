@@ -1,6 +1,8 @@
 .env
 __pycache__/
 *.pyc
+*.tmp.*
 .claude/
 data/avisos.json
 data/grade.json
+data/calendario.json

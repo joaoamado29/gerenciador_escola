@@ -1,4 +1,0 @@
-# Página do administrador para gerenciar usuários (em construção)
-import streamlit as st
-
-st.write('Gerenciar Usuários')

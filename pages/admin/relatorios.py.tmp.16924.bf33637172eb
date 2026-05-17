@@ -1,4 +1,0 @@
-# Página do administrador para gerar relatórios (em construção)
-import streamlit as st
-
-st.write('Relatórios')

@@ -64,3 +64,66 @@ header[data-testid="stHeader"] span {
         font-weight: 600;
         filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
     }
+
+
+/* ===== Calendário letivo ===== */
+.cal-grid {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    margin-top: 0.5rem;
+}
+.cal-grid th, .cal-grid td {
+    border: 1px solid #e2e2e2;
+    text-align: center;
+    vertical-align: top;
+    padding: 0.45rem 0.3rem;
+    font-size: 0.9rem;
+    height: 4.2rem;
+}
+.cal-grid th {
+    background: #009b1a;
+    font-weight: 600;
+    height: auto;
+    padding: 0.4rem 0;
+}
+.cal-grid td .num {
+    font-weight: 600;
+    display: block;
+    font-size: 0.95rem;
+}
+.cal-grid td .desc {
+    display: block;
+    font-size: 0.68rem;
+    margin-top: 0.15rem;
+    opacity: 0.8;
+    line-height: 1.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.cal-fora { background: transparent; color: #cfcfcf; }
+.cal-letivo { background: transparent; }
+.cal-fim_de_semana,
+.cal-feriado,
+.cal-recesso { background: rgba(255, 196, 0, 0.22); }
+.cal-evento { background: rgba(0, 170, 60, 0.22); }
+.cal-ferias { background: rgba(0, 120, 220, 0.22); }
+.cal-recuperacao { background: rgba(220, 30, 30, 0.22); }
+.cal-hoje { outline: 2px solid #009b1a; outline-offset: -2px; }
+
+.cal-legenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 0.5rem 0 0.2rem;
+    font-size: 0.85rem;
+}
+.cal-legenda .item { display: flex; align-items: center; gap: 0.35rem; }
+.cal-legenda .box {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid #d0d0d0;
+    display: inline-block;
+}
