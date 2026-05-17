@@ -6,3 +6,4 @@ __pycache__/
 data/avisos.json
 data/grade.json
 data/calendario.json
+data/usuarios.json

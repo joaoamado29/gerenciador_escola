@@ -3,3 +3,4 @@ psycopg2==2.9.12
 python-dotenv==1.2.2
 pytest==9.0.3
 holidays==0.96
+bcrypt==4.2.1

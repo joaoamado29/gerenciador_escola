@@ -7,11 +7,30 @@ TIMEOUT = 30
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_app_principal_carrega_navegacao_professor():
+def test_app_principal_exibe_tela_de_login():
+    # Sem usuário autenticado, app.py deve renderizar a tela de login
+    # (não a navegação interna). Garante que o gate de autenticação está ativo.
+    import os
+    os.environ.setdefault('ADMIN_SENHA_INICIAL', 'teste-inicial-1')
     at = AppTest.from_file('app.py', default_timeout=TIMEOUT)
     at.run()
     assert not at.exception
-    # A navegação do professor inicia na página "Início"
+    assert any('Acesso ao sistema' in (t.value or '') for t in at.title)
+
+
+def test_app_apos_login_carrega_navegacao_do_papel(tmp_path, monkeypatch):
+    # Simula sessão autenticada via session_state e confirma que a navegação
+    # do papel correspondente é renderizada (página inicial = escola).
+    import os
+    os.environ.setdefault('ADMIN_SENHA_INICIAL', 'teste-inicial-1')
+    at = AppTest.from_file('app.py', default_timeout=TIMEOUT)
+    at.session_state['autenticado'] = True
+    at.session_state['matricula'] = '000000'
+    at.session_state['papel'] = 'professor'
+    at.session_state['nome'] = 'Teste'
+    at.session_state['deve_trocar_senha'] = False
+    at.run()
+    assert not at.exception
     assert any('Escola Estadual Machado de Assis' in (t.value or '') for t in at.title)
 
 

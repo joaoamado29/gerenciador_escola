@@ -1,11 +1,24 @@
-# Define as barras de navegação superiores para cada tipo de usuário
+# Define as barras de navegação superiores para cada tipo de usuário.
+# O 'papel' vem do auth.py (sessão autenticada) e NÃO deve ser sobrescrito aqui.
 import streamlit as st
+
+from auth import logout
+
+
+# Botão de logout fixo na sidebar (exibido junto com qualquer navegação)
+def _sidebar_logout() -> None:
+    nome = st.session_state.get("nome", "")
+    matricula = st.session_state.get("matricula", "")
+    if nome:
+        st.sidebar.caption(f"Logado como **{nome}** ({matricula})")
+    if st.sidebar.button("Sair", width="stretch", type="secondary"):
+        logout()
+        st.rerun()
 
 
 # Navegação para o aluno
 def nav_aluno():
-    # Identifica o tipo de usuário para as páginas compartilhadas (ex.: Avisos)
-    st.session_state['papel'] = 'aluno'
+    _sidebar_logout()
     # Agrupa as páginas em seções exibidas no menu superior
     pages = {
         "Aluno": [
@@ -21,6 +34,9 @@ def nav_aluno():
             st.Page("pages/shared/calendario.py", title="Calendário"),
             st.Page("pages/aluno/horarios.py", title="Horário de Aula"),
         ],
+        "Conta": [
+            st.Page("pages/shared/conta.py", title="Minha Conta"),
+        ],
     }
 
     # Renderiza o menu no topo e executa a página escolhida
@@ -30,7 +46,7 @@ def nav_aluno():
 
 # Navegação para o professor
 def nav_professor():
-    st.session_state['papel'] = 'professor'
+    _sidebar_logout()
     pages = {
         "Professor": [
             st.Page("pages/shared/inicio.py", title="Início", default=True),
@@ -45,6 +61,9 @@ def nav_professor():
             st.Page("pages/shared/calendario.py", title="Calendário"),
             st.Page("pages/professor/grade_horaria.py", title="Grade Horária"),
         ],
+        "Conta": [
+            st.Page("pages/shared/conta.py", title="Minha Conta"),
+        ],
     }
 
     pg = st.navigation(pages, position="top")
@@ -53,7 +72,7 @@ def nav_professor():
 
 # Navegação para o administrador
 def nav_admin():
-    st.session_state['papel'] = 'admin'
+    _sidebar_logout()
     pages = {
         "Admin": [
             st.Page("pages/shared/inicio.py", title="Início", default=True),
@@ -69,6 +88,9 @@ def nav_admin():
         "Horários": [
             st.Page("pages/shared/calendario.py", title="Calendário"),
             st.Page("pages/admin/grade_horaria.py", title="Grade Horária"),
+        ],
+        "Conta": [
+            st.Page("pages/shared/conta.py", title="Minha Conta"),
         ],
     }
 
